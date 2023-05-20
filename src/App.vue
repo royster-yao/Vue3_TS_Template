@@ -1,20 +1,11 @@
 <template>
-  <div class="box">
-    <h1>vite + Ts</h1>
-  </div>
+  <div></div>
 </template>
 
 <script setup lang="ts">
-const str = '我爱你祖国'
+for (let i = 0; i < 100; i++) {
+  console.log(i)
+}
 </script>
 
-<style scoped lang="scss">
-.box {
-  width: 600px;
-  height: 400;
-  background-color: black;
-  h1 {
-    color: white;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
