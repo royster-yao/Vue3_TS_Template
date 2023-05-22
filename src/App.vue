@@ -1,13 +1,7 @@
 <template>
-  <div>
-    <h1>增增一个标题</h1>
-  </div>
+  <h1><router-view></router-view></h1>
 </template>
 
-<script setup lang="ts">
-for (let i = 0; i < 100; i++) {
-  console.log(i)
-}
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss"></style>
