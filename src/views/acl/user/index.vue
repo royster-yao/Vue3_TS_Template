@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <h1>用户管理</h1>
 </template>
 
 <script setup lang="ts"></script>

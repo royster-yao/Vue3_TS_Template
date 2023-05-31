@@ -28,6 +28,8 @@ app.use(gloalComponent)
 
 // 注册模板路由
 app.use(router)
+// 引入路由鉴权
+import './permission'
 // 安装仓库
 app.use(pinia)
 // 将应用挂载到挂载点上
