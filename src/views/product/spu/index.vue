@@ -28,7 +28,7 @@
             label="SPU描述"
           ></el-table-column>
           <el-table-column label="操作">
-            <template #default>
+            <template #default="{ row }">
               <el-button
                 type="primary"
                 icon="Plus"
@@ -40,7 +40,7 @@
                 icon="Edit"
                 size="small"
                 title="修改SPU"
-                @click="updateSpu"
+                @click="updateSpu(row)"
               ></el-button>
               <el-button
                 type="info"
@@ -69,7 +69,11 @@
         />
       </div>
       <!-- 添加spu|修改spu子组件 -->
-      <spu-form v-show="scene === 1" @changeScene="changeScene"></spu-form>
+      <spu-form
+        ref="SpuFormInstance"
+        v-show="scene === 1"
+        @changeScene="changeScene"
+      ></spu-form>
       <!-- 添加spu|修改spu子组件 -->
       <sku-form v-show="scene === 2"></sku-form>
     </el-card>
@@ -80,7 +84,11 @@
 import { ref, watch } from 'vue'
 import usecategoryStore from '@/store/modules/category'
 import { reqHasSpu } from '@/api/product/spu'
-import { HasSpuResponseData, Records } from '@/api/product/spu/type'
+import type {
+  HasSpuResponseData,
+  Records,
+  SpuData,
+} from '@/api/product/spu/type'
 import SpuForm from './components/spuForm.vue'
 import SkuForm from './components/skuForm.vue'
 const categoryStore = usecategoryStore()
@@ -95,6 +103,9 @@ const pageSize = ref<number>(3)
 const total = ref<number>(0)
 // 存储已有的SPU数据
 const records = ref<Records>([])
+
+// 获取子组件实例SpuForm
+const SpuFormInstance = ref<any>()
 
 // 监听三级分类Id变化
 watch(
@@ -138,9 +149,11 @@ const changeScene = (num: number) => {
   scene.value = num
 }
 // 修改已有的SPU按钮的回调
-const updateSpu = () => {
+const updateSpu = (row: SpuData) => {
   // 切换为场景1：添加与修改已有SPU的结构 -> SpuForm
   scene.value = 1
+  // 调用子组件实例的方法获取完整的已有的 SPU 数据
+  SpuFormInstance.value.initHasSpuData(row)
 }
 </script>
 

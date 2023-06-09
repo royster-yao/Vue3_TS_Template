@@ -59,11 +59,27 @@
 </template>
 
 <script setup lang="ts">
+import {
+  reqAllTradeMark,
+  reqSpuImageList,
+  reqSpuHasSaleAttr,
+  reqAllSaleAttr,
+} from '@/api/product/spu'
+import { AllTradeMark, SpuData } from '@/api/product/spu/type'
 const emit = defineEmits(['changeScene'])
 // 点击取消按钮：通知父组件切换场景位1，展示已有的SPU数据
 const cancel = () => {
   emit('changeScene', 0)
 }
+const initHasSpuData = async (spu: SpuData) => {
+  // spu 即为父组件传递过来的已有的SPU对象（不完整）
+  // 获取全部的品牌是数据
+  const res: AllTradeMark = await reqAllTradeMark()
+  // 获取某一个品牌旗下的售卖商品的图片
+  const res1: any = await reqSpuImageList(spu.id as number)
+  console.log(res1)
+}
+defineExpose({ initHasSpuData })
 </script>
 
 <style scoped lang="scss"></style>
