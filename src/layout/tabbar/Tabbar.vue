@@ -21,10 +21,10 @@ import Setting from './setting/Setting.vue'
   display: flex;
   justify-content: space-between;
   background-image: linear-gradient(
-    to right,
-    rgb(240, 203, 203),
-    rgb(186, 218, 136),
-    rgb(240, 218, 218)
+    141deg,
+    #9fb8ad 0%,
+    #1fdba9 51%,
+    #2cb5e8 75%
   );
   .tabbar_left {
     display: flex;
