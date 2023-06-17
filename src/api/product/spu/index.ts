@@ -108,6 +108,10 @@ export const reqAddSku = (data: SkuData) =>
 export const reqSkuList = (skuId: number | string) =>
   request.get<any, SkuInfoData>(API.SKUINFO_URL + skuId)
 
-// 删除已有的SPU
+/**
+ * 删除已有的SPU
+ * @param spuId 需要删除SPU的ID
+ * @returns 是否删除成功
+ */
 export const reqRemoveSpu = (spuId: number | string) =>
   request.delete<any, any>(API.REMOVESPU_URL + spuId)
