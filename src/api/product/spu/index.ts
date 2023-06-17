@@ -5,6 +5,8 @@ import type {
   HasSaleAttrResponseData,
   HasSpuResponseData,
   SaleAttrResponseData,
+  SkuData,
+  SkuInfoData,
   SpuData,
   SpuHasImg,
 } from './type'
@@ -23,6 +25,12 @@ enum API {
   ADDSPU_URL = '/admin/product/saveSpuInfo',
   // 更新已有的SPU
   UPDATESPU_URL = '/admin/product/updateSpuInfo',
+  // 追加一个新的SKU地址
+  ADDSKU_URL = '/admin/product/saveSkuInfo',
+  // 查看某一个已有的SPU下的全部的售卖的商品
+  SKUINFO_URL = '/admin/product/findBySpuId/',
+  // 删除已有的SPU
+  REMOVESPU_URL = '/admin/product/deleteSku/',
 }
 
 /**
@@ -50,7 +58,7 @@ export const reqAllTradeMark = () =>
 
 /**
  * 获取某一个已有的SPU下的全部的商品的图片地址
- * @param spuId 需要获取的spuID
+ * @param {number} spuId 需要获取的spuID
  * @returns 图片地址
  */
 export const reqSpuImageList = (spuId: number) =>
@@ -81,6 +89,25 @@ export const reqAddOrUpdateSpu = (data: SpuData) => {
   if (data.id) {
     return request.post<any, any>(API.UPDATESPU_URL, data)
   } else {
-    return request.post<any, any>(API.ADDSPU_URL)
+    return request.post<any, any>(API.ADDSPU_URL, data)
   }
 }
+
+/**
+ * 添加SKU的请求
+ * @param {SkuData} data 需要带给服务器的参数
+ */
+export const reqAddSku = (data: SkuData) =>
+  request.post<any, any>(API.ADDSKU_URL, data)
+
+/**
+ * 获取SKU的数据
+ * @param skuId 需要查询的SPUid
+ * @returns 查询的结果
+ */
+export const reqSkuList = (skuId: number | string) =>
+  request.get<any, SkuInfoData>(API.SKUINFO_URL + skuId)
+
+// 删除已有的SPU
+export const reqRemoveSpu = (spuId: number | string) =>
+  request.delete<any, any>(API.REMOVESPU_URL + spuId)
