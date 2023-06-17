@@ -65,7 +65,7 @@ export interface SaleAttrValue {
   createTime?: null
   updateTime?: null
   spuId?: number
-  baseSaleAttrId: number
+  baseSaleAttrId: number | string
   saleAttrValueName: string
   saleAttrName?: string
   isChecked?: null
@@ -80,9 +80,12 @@ export interface SaleAttr {
   createTime?: null
   updateTime?: null
   spuId?: number
-  baseSaleAttrId: number
-  saleAttrValueName: string
+  baseSaleAttrId: number | string
+  saleAttrName: string
   spuSaleAttrValueList: SpuSaleAttrValueList
+  flag?: boolean
+  saleAttrValue?: string
+  saleIdAndValueId?: string
 }
 
 // SPU已有的销售属性接口返回数据TS类型
@@ -98,4 +101,31 @@ export interface HasSaleAttr {
 
 export interface HasSaleAttrResponseData extends ResponseData {
   data: HasSaleAttr[]
+}
+
+export interface Attr {
+  attrId: string | number
+  valueId: string | number
+}
+
+export interface saleArr {
+  saleAttrId: string | number
+  saleAttrValueId: string | number
+}
+export interface SkuData {
+  category3Id: string | number
+  spuId: string | number
+  tmId: string | number
+  skuName: string
+  price: string | number
+  weight: string | number
+  skuDesc: string
+  skuAttrValueList?: Attr[]
+  skuSaleAttrValueList?: saleArr[]
+  skuDefaultImg: string
+}
+
+// 获取SKU数据接口的TS类型
+export interface SkuInfoData extends ResponseData {
+  data: SkuData[]
 }
