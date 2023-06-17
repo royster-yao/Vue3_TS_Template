@@ -38,6 +38,7 @@ export interface Attr {
   categoryId: number | string
   categoryLevel: number
   attrValueList: AttrValueList
+  attrIdAndValueId?: string
 }
 
 // 存储每一个属性对象数组的 ts 类型
