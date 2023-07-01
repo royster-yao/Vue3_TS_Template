@@ -48,9 +48,14 @@ import Tabbar from './tabbar/Tabbar.vue'
 // 获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 import useLayoutSettingStore from '@/store/modules/setting'
+import { onMounted } from 'vue'
 const userStore = useUserStore()
 const LayoutSettingStore = useLayoutSettingStore()
 
+onMounted(() => {
+  const html = document.documentElement
+  html.style.setProperty('--el-color-primary', LayoutSettingStore.color)
+})
 // 首页挂在完毕发请求获取用户信息
 </script>
 
