@@ -48,6 +48,10 @@ export const reqCancelSale = (SkuId: number) =>
 export const reqSkuInfo = (skuId: number) =>
   request.get<any, SkuInfoData>(API.SKUINFO_URL + skuId)
 
-// 删除某一个已有的商品
+/**
+ * 删除某一个已有的商品
+ * @param skuId 需要删除商品的ID
+ * @returns 是否删除成功
+ */
 export const reqRemoveSku = (skuId: number) =>
   request.delete<any, any>(API.DELETESKU_URL + skuId)
