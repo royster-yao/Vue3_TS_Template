@@ -20,12 +20,12 @@ import Setting from './setting/Setting.vue'
   height: 100%;
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(
-    141deg,
-    #9fb8ad 0%,
-    #1fdba9 51%,
-    #2cb5e8 75%
-  );
+  // background-image: linear-gradient(
+  //   141deg,
+  //   #9fb8ad 0%,
+  //   #1fdba9 51%,
+  //   #2cb5e8 75%
+  // );
   .tabbar_left {
     display: flex;
     align-items: center;
